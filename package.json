@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "node-telegram-bot-api": "0.58.0",
+    "nodemon": "^2.0.19",
+    "telebot": "github:mullwar/telebot",
+    "vercel": "^28.2.0"
+  },
+  "name": "pokurbotapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
