@@ -144,7 +144,7 @@ bot.on('message', (msg) => {
     if (data === 'callToSmoke') { 
         bot.sendMessage (chatId, "Вы позвали всех на покур. Не опаздывайте", {
         })
-        bot.sendMessage (chatId1, "@" + fromUsername + " зовет вас на покур", {
+        bot.sendMessage (chatId1, "📣 @" + fromUsername + " зовет вас на покур!", {
         })
      }
     }
