@@ -37,6 +37,7 @@ let chatIDs = {};
 let chatIdsSize = 0;
 const chats=ref(db, 'chats');
 let msgOnCalltoSmoke = "зовет вас на покур!";
+let textInstruction = "❕Просто добавь меня в чаты, где собираются курильщики. 🔔 Во все чаты, где я нахожусь, будет отправлено оповещение, когда ты захочешь покур!✅"
 //-------------------------------------
 
 //актуализация списка чатов. В РабВерсии - в функцию передается объект ChatIds
@@ -130,12 +131,23 @@ const keyboard = [
         }
     ],
   ];
+  const keyboard6 = [
+    [
+        {
+            text: "Хочу еще покур.",
+            callback_data: "wannaSmoke"
+
+        }
+    ],
+  ];
 
     bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     text = msg.text; 
     if (text === "/start" || text === "Хочу покур!" || text === "хочу покур" 
     || text === "покур" || text === "Покур" || text === "хочу покур!" ) {
+        bot.sendMessage(chatId, textInstruction, { 
+        });
         bot.sendMessage(chatId, textWannaSmoke, { 
             reply_markup: {
                 inline_keyboard: keyboard,
@@ -252,6 +264,11 @@ const keyboard = [
 
     if (data === 'callToSmoke') { 
         bot.sendMessage (chatId, "Вы позвали всех на покур. Не опаздывайте! 🚬", {
+        })
+        bot.sendMessage (chatId, "Хочешь покур?", {
+            reply_markup: {
+                inline_keyboard: keyboard
+            }
         })
        console.log(chatIdsSize);
        getChats();
