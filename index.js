@@ -4,8 +4,10 @@ const bot = new TelegramBot(token,{polling: true});
 const axios = require ('axios');
 const express = require("express");
 const app2 = express();
-const port = process.env.PORT || 3001;
-app2.get("/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
+const port = process.env.PORT || 1000;
+//app2.get("/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
+//app2.get("/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
+app2.get("http://pokur-bot.onrender.com:10000/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
 
 app2.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
