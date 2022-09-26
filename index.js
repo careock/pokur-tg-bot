@@ -130,14 +130,12 @@ const keyboard = [
         });
     }
     else if(msg.new_chat_member) {
+        bot.sendMessage (chatId, "Спасибо, что позвали! Через меня вы можете звать на покур всех, кто меня пользует.", {
+        })
         get(chats,'value')
             .then(function(snapshot) {
                 let chatIDsUPD={};
                 chatIDs=snapshot.val();
-                /*chatIDs={
-                    0:123,
-                    1:1234
-                };*/
                 console.log( "snapshot.val   " + snapshot.val());
                 console.log( "snapshot   " + snapshot);
                 //chatIdsSize=Object.keys(snapshot).length;
