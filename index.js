@@ -2,6 +2,12 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = "5788161727:AAG6yWHbuwMySGo9PPvbxVt0_EOfJfSGxNI";
 const bot = new TelegramBot(token,{polling: true});
 const axios = require ('axios');
+const express = require("express");
+const app2 = express();
+const port = process.env.PORT || 3001;
+app2.get("/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
+
+app2.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 //------------------------------------
 const {initializeApp} = require ("firebase/app");
@@ -17,6 +23,13 @@ const firebaseConfig = {
   databaseURL: "https://pokur-bot-default-rtdb.firebaseio.com"
 };
 const app = initializeApp(firebaseConfig);
+
+
+/*get(app)
+.then (function(req,res){
+        res.sendStatus(200);
+});*/
+  
 //const db = getDatabase(app);
 let db = getDatabase(app);
 textWannaSmoke = "Хочешь покур?";
@@ -28,7 +41,7 @@ let msgOnCalltoSmoke = "зовет вас на покур!";
 
 //актуализация списка чатов. В РабВерсии - в функцию передается объект ChatIds
 async function updateChatIds(newChatId) {
-    console.log('chatIds '+chatIDs)
+    console.log('chatIds '+chatIDs);
     chatIdsSize=Object.keys(chatIDs).length;
     console.log(chatIdsSize);
     let isPovtor = false; 
@@ -56,7 +69,7 @@ async function updateChatIds(newChatId) {
                 console.log("size:   " + chatIdsSize);
         })
     }
-    getChats();
+    //getChats();
 
 //логика бота--------------------------------------------------------------------------
 
@@ -116,7 +129,7 @@ const keyboard = [
 
         }
     ],
-  ]
+  ];
 
     bot.on('message', (msg) => {
     const chatId = msg.chat.id;
@@ -162,7 +175,7 @@ const keyboard = [
     /*if (isPovtor == false){
         chatIDs[chatIdsSize]=chatId;
     }*/
-    console.log(chatIDsUPD);
+    //console.log(chatIDsUPD);
     //update(chats,chatIDs);
 
         })
@@ -177,7 +190,6 @@ const keyboard = [
 
     bot.on('callback_query', msg => {
     const fromUsername = msg.from.username;
-    //console.log (fromUsername)
     const chatId = msg.message.chat.id;
     const data = msg.data;
 
@@ -188,7 +200,7 @@ const keyboard = [
             inline_keyboard: keyboard2
         }
        })
-    }
+    };
 
     if (data === 'haveCig') { 
         bot.sendMessage (chatId, "Стрельнешь, если что?", {
@@ -196,7 +208,7 @@ const keyboard = [
              inline_keyboard: keyboard3
          }
         })
-     }
+     };
      if (data === 'canGive') { 
         bot.sendMessage (chatId, "Внатуре ты кабан. Зовем всех на покур?", {
          reply_markup: {
@@ -204,7 +216,7 @@ const keyboard = [
          }
         })
         msgOnCalltoSmoke = "зовет вас на покур и говорит, что стрельнет сигу, если надо! 🦁💪";
-     }
+     };
      if (data === 'canNotGive') { 
         bot.sendMessage (chatId, "Ок. Зовем всех на покур?", {
          reply_markup: {
@@ -212,7 +224,7 @@ const keyboard = [
          }
         })
         msgOnCalltoSmoke = "зовет вас на покур, но сигу не стрельнет. 🐭🖕";
-     }
+     };
      if (data === 'haveNoCig') { 
         bot.sendMessage (chatId, "Не вопрос, бро", {
          reply_markup: {
@@ -220,7 +232,7 @@ const keyboard = [
          }
         })
         
-     }
+     };
      if (data === 'wannaBumCig') { 
         bot.sendMessage (chatId, "Ты хочешь стрельнуть сигу. Зовем всех на покур?", {
          reply_markup: {
@@ -228,7 +240,7 @@ const keyboard = [
          }
         })
         msgOnCalltoSmoke = "зовет вас на покур, и просит стрельнуь сигу! 🙏🥺";
-     }
+     };
      if (data === 'wannaBumDudka') { 
         bot.sendMessage (chatId, "Ты хочешь покурить чужую дудку. Зовем всех на покур?", {
          reply_markup: {
@@ -236,7 +248,7 @@ const keyboard = [
          }
         })
         msgOnCalltoSmoke = "зовет вас на покур, и просит дать пососать дудку. 👌🏻👈🏿";
-     }
+     };
 
     if (data === 'callToSmoke') { 
         bot.sendMessage (chatId, "Вы позвали всех на покур. Не опаздывайте! 🚬", {
