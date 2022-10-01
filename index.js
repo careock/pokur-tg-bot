@@ -6,8 +6,8 @@ const express = require("express");
 const app2 = express();
 const PORT = process.env.PORT || 10000;
 app2.use(express.json({ extended: false }));
-app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
-//const router = express.Router();
+app2.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+const router = express.Router();
 
 /**
  * GET product list.
