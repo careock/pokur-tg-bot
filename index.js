@@ -1,22 +1,18 @@
 const TelegramBot = require('node-telegram-bot-api');
 const token = "5788161727:AAG6yWHbuwMySGo9PPvbxVt0_EOfJfSGxNI";
 const bot = new TelegramBot(token,{polling: true});
-const axios = require ('axios');
+//const axios = require ('axios');
 const express = require("express");
 const app2 = express();
 const PORT = process.env.PORT || 10000;
-const product = require("./api/product");
-
 app2.use(express.json({ extended: false }));
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
-
-const express = require("express");
-const router = express.Router();
+//const router = express.Router();
 
 /**
  * GET product list.
  *
- * @return product list | empty.
+ * /@/return product list | empty.
  */
 router.get("/", async (req, res) => {
   try {
@@ -30,7 +26,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+//module.exports = router;
 
 
 //------------------------------------
