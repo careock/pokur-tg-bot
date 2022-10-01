@@ -8,9 +8,30 @@ const PORT = process.env.PORT || 10000;
 const product = require("./api/product");
 
 app2.use(express.json({ extended: false }));
-
-app2.use("/api/product", product);
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+
+const express = require("express");
+const router = express.Router();
+
+/**
+ * GET product list.
+ *
+ * @return product list | empty.
+ */
+router.get("/", async (req, res) => {
+  try {
+    res.json({
+      status: 200,
+      message: "Get data has successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Server error");
+  }
+});
+
+module.exports = router;
+
 
 //------------------------------------
 const {initializeApp} = require ("firebase/app");
