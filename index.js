@@ -4,12 +4,13 @@ const bot = new TelegramBot(token,{polling: true});
 const axios = require ('axios');
 const express = require("express");
 const app2 = express();
-const port = process.env.PORT || 1000;
-//app2.get("/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
-//app2.get("/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
-app2.get("http://pokur-bot.onrender.com:10000/", (req, res) => res.writeHead(200, {'Content-Type': 'text/plain'}));
+const PORT = process.env.PORT || 10000;
+const product = require("./api/product");
 
-app2.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app2.use(express.json({ extended: false }));
+
+app2.use("/api/product", product);
+app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
 
 //------------------------------------
 const {initializeApp} = require ("firebase/app");
