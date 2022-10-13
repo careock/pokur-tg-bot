@@ -2,31 +2,24 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = "5788161727:AAG6yWHbuwMySGo9PPvbxVt0_EOfJfSGxNI";
 const bot = new TelegramBot(token,{polling: true});
 //const axios = require ('axios');
+//const PORT = process.env.PORT || 3000;
+//console.log(process.env);
+//app2.use(express.json({ extended: false }));
+//app2.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+//const router = express.Router();
 const express = require("express");
+//const fs = require("fs");
 const app2 = express();
-const PORT = process.env.PORT || 10000;
-app2.use(express.json({ extended: false }));
-app2.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
-const router = express.Router();
-
-/**
- * GET product list.
- *
- * /@/return product list | empty.
- */
-router.get("/", async (req, res) => {
-  try {
-    res.json({
-      status: 200,
-      message: "Get data has successfully",
-    });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Server error");
-  }
+const jsonParser = express.json();
+  
+//app.use(express.static(__dirname + "/public"));
+app2.get("/", function(req,res){
+  res.status(200).send();
+}
+);  
+app2.listen(10000, function(){
+    console.log("Сервер ожидает подключения...");
 });
-
-module.exports = router;
 
 
 //------------------------------------
