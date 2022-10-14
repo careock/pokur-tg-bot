@@ -13,6 +13,7 @@ const app2 = express();
 const jsonParser = express.json();
   
 //app.use(express.static(__dirname + "/public"));
+//http://pokur-bot.onrender.com:10000/
 app2.get("/", function(req,res){
   res.status(200).send();
 }
@@ -55,6 +56,10 @@ let textInstruction = "❕Просто добавь меня в чаты, где
 
 //актуализация списка чатов. В РабВерсии - в функцию передается объект ChatIds
 async function updateChatIds(newChatId) {
+    app2.get("/", function(req,res){
+        res.status(200).send();
+      }
+      );  
     console.log('chatIds '+chatIDs);
     chatIdsSize=Object.keys(chatIDs).length;
     console.log(chatIdsSize);
@@ -76,6 +81,10 @@ async function updateChatIds(newChatId) {
     function getChats () {
         get(chats,'value')
             .then(function(snapshot) {
+                app2.get("/", function(req,res){
+                    res.status(200).send();
+                  }
+                  );  
                 chatIDs=snapshot.val();
                 console.log( "snapshot.val   " + snapshot.val());
                 console.log( "snapshot   " + snapshot);
@@ -155,6 +164,10 @@ const keyboard = [
   ];
 
     bot.on('message', (msg) => {
+        app2.get("/", function(req,res){
+            res.status(200).send();
+          }
+          );  
     const chatId = msg.chat.id;
     text = msg.text; 
     if (text === "/start" || text === "Хочу покур!" || text === "хочу покур" 
