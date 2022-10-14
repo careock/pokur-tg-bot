@@ -164,10 +164,7 @@ const keyboard = [
   ];
 
     bot.on('message', (msg) => {
-        app2.get("/", function(req,res){
-            res.status(200).send();
-          }
-          );  
+    console.log(msg);
     const chatId = msg.chat.id;
     text = msg.text; 
     if (text === "/start" || text === "Хочу покур!" || text === "хочу покур" 
