@@ -1,27 +1,27 @@
 const TelegramBot = require('node-telegram-bot-api');
 const token = "5788161727:AAG6yWHbuwMySGo9PPvbxVt0_EOfJfSGxNI";
 const bot = new TelegramBot(token,{polling: true});
-//const axios = require ('axios');
-//const PORT = process.env.PORT || 3000;
-//console.log(process.env);
-//app2.use(express.json({ extended: false }));
-//app2.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
-//const router = express.Router();
 const express = require("express");
+//1) docker build -t pokur_bot .
+//2) docker run -d pokur_bot
 //const fs = require("fs");
 const app2 = express();
-const jsonParser = express.json();
+
+
+
+//const jsonParser = express.json();
   
 //app.use(express.static(__dirname + "/public"));
 //http://pokur-bot.onrender.com:10000/
-app2.get("/", function(req,res){
-  res.status(200).send();
-}
-);  
+
+
 app2.listen(10000, function(){
     console.log("Сервер ожидает подключения...");
 });
-
+app2.get("/", function(req,res){
+    res.status(200).send();
+  }
+  ); 
 
 //------------------------------------
 const {initializeApp} = require ("firebase/app");
