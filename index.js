@@ -1,7 +1,7 @@
 const express = require("express");
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
-const token = "6110845060:AAHnp4x-fwnTT0hdZLEb2GNa9HMG5s1rziU";
+const token = "5788161727:AAG6yWHbuwMySGo9PPvbxVt0_EOfJfSGxNI";
 const bot = new TelegramBot(token,{polling: true});
 
 //1) docker build -t pokur_bot .
@@ -24,13 +24,13 @@ const {getDatabase, set, ref, get, child, update, push} = require ("firebase/dat
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBJs0wQt5m-ZQOgfP8NnfIKjhqPjxL7Wek",
-  authDomain: "pokur-bot-test.firebaseapp.com",
-  projectId: "pokur-bot-test",
-  storageBucket: "pokur-bot-test.appspot.com",
-  messagingSenderId: "364851967080",
-  appId: "1:364851967080:web:989d1460d33e7dec3db7dd",
-  databaseURL: "https://pokur-bot-test-default-rtdb.firebaseio.com"
+    apiKey: "AIzaSyCP_MM8PwNuwIB29s3aAkKh1ai-QZ83aW0",
+    authDomain: "pokur-bot.firebaseapp.com",
+    projectId: "pokur-bot",
+    storageBucket: "pokur-bot.appspot.com",
+    messagingSenderId: "1059723331580",
+    appId: "1:1059723331580:web:7b0973560984a74757d479",
+    databaseURL: "https://pokur-bot-default-rtdb.firebaseio.com"
 };
 
 const app = initializeApp(firebaseConfig);
