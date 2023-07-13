@@ -419,8 +419,14 @@ const keyboard = [
 
 
     else if(msg.new_chat_member) {
-        bot.sendMessage (chatId, "Спасибо, что позвали! Через меня вы можете звать на покур всех, кто меня пользует.", {
-        })
+        const options = {
+            reply_markup: {
+              keyboard: [[ "🚬 Хочу покур!"]],
+              resize_keyboard: true,
+              one_time_keyboard: true,
+            },
+          };
+        bot.sendMessage (chatId, "Спасибо, что позвали! Через меня вы можете звать на покур всех, кто меня пользует.", options)
         get(chats,'value')
             .then(function(snapshot) {
                 let chatIDsUPD={};
