@@ -1,7 +1,7 @@
 const express = require("express");
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
-const token = process.env.TGTOKENTEST;
+const token = "6110845060:AAHnp4x-fwnTT0hdZLEb2GNa9HMG5s1rziU";
 const bot = new TelegramBot(token,{polling: true});
 
 //1) docker build -t pokur_bot .
